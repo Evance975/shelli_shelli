@@ -1,4 +1,5 @@
-#include "shell.h"
+#include "my_shell.h"
+
 /**
  * main - initialize the variables of the program
  * @argc: no. of values received from the command line
@@ -18,7 +19,7 @@ int main(int argc, char *argv[], char *env[])
 	if (isatty(STDIN_FILENO) && isatty(STDOUT_FILENO) && argc == 1)
 	{/* In the terminal, interactive mode */
 		errno = 2;/*???????*/
-		prompt = PROMPT_MSG;
+		prompt = MY_PROMPT_MSG;
 	}
 	errno = 0;
 	sisifo(prompt, data);
@@ -33,7 +34,7 @@ int main(int argc, char *argv[], char *env[])
 void handle_ctrl_c(int opr UNUSED)
 {
 	_print("\n");
-	_print(PROMPT_MSG);
+	_print(MY_PROMPT_MSG);
 }
 
 /**
@@ -85,11 +86,11 @@ void initialize_data(data_of_program *data, int argc, char *argv[], char **env)
 	}
 }
 /**
- * sisinfo - an infinite loop that shows prompt
+ * sisifo - an infinite loop that shows prompt
  * @prompt: prompt to print
  * @data: an infinite loop that shows prompt
  */
-void sisinfo(char *prompt, data_of_program *data)
+void sisifo(char *prompt, data_of_program *data)
 {
 	int error_code = 0, string_len = 0;
 
